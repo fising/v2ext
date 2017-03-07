@@ -1,2 +1,2 @@
 # v2ext
-V2Ext - v2ex.com 社区功能增强扩展
+V2Ext - v2ex.com 社区功能增强扩展 for Chrome
