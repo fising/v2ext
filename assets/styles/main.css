@@ -1,0 +1,48 @@
+._avatar_tips_box {
+    width: 365px;
+    border: 1px solid #556;
+    box-shadow: 1px 1px 10px #556;
+    position: absolute;
+    background: white;
+    display: none;
+    z-index: 1001;
+}
+
+._avatar_tips_middle {
+    left: 24px;
+    top: 24px
+}
+
+._avatar_tips_large {
+    left: 36px;
+    top: 36px
+}
+
+._avatar_tips_box_header {
+    height: 116px;
+    background: url('chrome-extension://__MSG_@@extension_id__/assets/images/background.png') 0 0 no-repeat;
+}
+
+._avatar_tips_box_header ._avatar_tips_box_avatar {
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #B08F7E;
+    border: 2px solid #FFEED6;
+    display: block;
+    width: 73px;
+    height: 73px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 16px;
+}
+
+._avatar_tips_box_header ._avatar_tips_box_avatar img {
+    display: block;
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+}
+
+._avatar_tips_box_header ._avatar_tips_box_text {
+    float:left;
+    margin: 20px auto auto 20px;
+}
