@@ -46,7 +46,19 @@
     border-radius: 50%;
 }
 
+._avatar_tips_box_header ._avatar_tips_box_base {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 10px;
+}
+
 ._avatar_tips_box_header ._avatar_tips_box_text {
+    text-align: left;
+    font-size: 16px;
     float: left;
     margin: 20px auto auto 20px;
 }

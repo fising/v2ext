@@ -43,7 +43,14 @@
     avatar_tips: {
         request: function (user_name, wrapper) {
             $.get('/member/' + user_name, {}, function (data) {
-
+                var regexp = /<span class="gray">.*&nbsp; (.*)<\/span>/g;
+                var matches = regexp.exec(data);
+                var pieces = matches[1].split('，');
+                var items = '';
+                for (var i in pieces) {
+                    items += '<li>' + pieces[i] + '</li>';
+                }
+                wrapper.find('._avatar_tips_box_base').html(items);
             }, 'text');
         },
         pos: function (avatar) {
@@ -81,7 +88,7 @@
                     '</span>' +
                     '<div class="_avatar_tips_box_text">' +
                     '<strong><a href="' + avatar_link + '">' + user_name + '</a></strong>' +
-                    '<div class="_avatar_tips_box_base"></div>' +
+                    '<ul class="_avatar_tips_box_base"></ul>' +
                     '</div>' +
                     '</div>' +
                     '</div>';
