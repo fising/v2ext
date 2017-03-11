@@ -1,3 +1,7 @@
+.header {
+    overflow: visible !important;
+}
+
 ._avatar_tips_box {
     width: 365px;
     border: 1px solid #556;
@@ -43,6 +47,6 @@
 }
 
 ._avatar_tips_box_header ._avatar_tips_box_text {
-    float:left;
+    float: left;
     margin: 20px auto auto 20px;
 }
