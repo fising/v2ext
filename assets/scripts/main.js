@@ -117,8 +117,68 @@
             $('.avatar').parent().hover(this.show(), this.hide());
         }
     },
+    se: {
+        map: {
+            'baidu': [
+                'https://www.baidu.com/s',
+                'wd'
+            ],
+            'bing': [
+                'http://www.bing.com/search',
+                'q'
+            ],
+            '360': [
+                'https://www.so.com/s',
+                'q'
+            ],
+            'sogou': [
+                'https://www.sogou.com/web',
+                'query'
+            ],
+            'google': [
+                'https://www.google.com/search',
+                'q'
+            ]
+        },
+        getSettings: function (type) {
+            if (typeof this.map[type] !== 'undefined') {
+                return this.map[type];
+            }
+
+            return this.map['google'];
+        },
+        inject: function (type) {
+            var script = document.createElement('script');
+            script.src = chrome.extension.getURL('assets/scripts/se/' + type + '.js');
+            (document.head || document.documentElement).appendChild(script);
+            script.remove();
+        },
+        set: function (type) {
+            switch (type) {
+                case 'baidu':
+                case 'bing':
+                case '360':
+                case 'sogou':
+                    break;
+                default:
+                    type = 'google';
+                    break;
+            }
+
+            var settings = this.getSettings(type);
+
+            $('#Search form').get(0).action = settings[0];
+            $('#q').attr('name', settings[1]);
+
+            this.inject(type);
+        },
+        init: function () {
+            this.set('baidu');
+        }
+    },
     init: function () {
         this.only_post_starter.show();
         this.avatar_tips.init();
+        this.se.init();
     }
 }).init();
