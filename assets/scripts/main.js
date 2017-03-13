@@ -1,4 +1,19 @@
 ({
+    post_starter_bg: {
+        setBackgroud: function (color) {
+            var cells = $('.box .cell[id^=r_]'),
+                user = $(".header small.gray a:first").text();
+
+            cells.each(function (k, e) {
+                if (user === $(e).find('strong a.dark').text()) {
+                    $(this).css('background', color);
+                }
+            });
+        },
+        init: function () {
+            this.setBackgroud('#33CCCC');
+        }
+    },
     only_post_starter: {
         listener: function () {
             var self = this;
@@ -180,5 +195,6 @@
         this.only_post_starter.show();
         this.avatar_tips.init();
         this.se.init();
+        this.post_starter_bg.init();
     }
 }).init();
