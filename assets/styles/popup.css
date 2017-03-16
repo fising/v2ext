@@ -1,0 +1,23 @@
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 20px 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: #dddddd 1px solid;
+}
+
+.weui-cells {
+    margin-left: 26px;
+}
+
+.weui-cells:before {
+    border: none !important;
+}
+
+.weui-cells:after {
+    border: none !important;
+}
+
+.weui-cell:before {
+    border: none !important;
+}
