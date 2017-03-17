@@ -21,3 +21,7 @@ h2 {
 .weui-cell:before {
     border: none !important;
 }
+
+.button-sp-area {
+    text-align: center;
+}
