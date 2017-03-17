@@ -8,9 +8,14 @@
     "48": "assets/images/icon_48.png",
     "128": "assets/images/icon_128.png"
   },
+  "permissions": [
+    "storage"
+  ],
   "background": {
-    "scripts": ["assets/scripts/background.js"],
-    "persistent":true
+    "scripts": [
+      "assets/scripts/background.js"
+    ],
+    "persistent": true
   },
   "browser_action": {
     "default_icon": "assets/images/icon_16.png"

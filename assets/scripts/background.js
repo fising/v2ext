@@ -14,8 +14,6 @@
             top: top,
             focused: true,
             type: "popup"
-        }, function (window) {
-            console.log(window)
         });
     },
     vars: {
@@ -33,7 +31,7 @@
         });
 
         chrome.browserAction.onClicked.addListener(function () {
-            if (0 == self.vars.settingWindowExist) {
+            if (0 == self.vars.settingWindowId) {
                 self.createSettingWindow();
             }
         });
