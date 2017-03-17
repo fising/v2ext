@@ -33,6 +33,10 @@
         chrome.browserAction.onClicked.addListener(function () {
             if (0 == self.vars.settingWindowId) {
                 self.createSettingWindow();
+            } else {
+                chrome.windows.update(self.vars.settingWindowId, {
+                    drawAttention: true
+                });
             }
         });
     }

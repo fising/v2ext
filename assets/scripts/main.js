@@ -187,14 +187,33 @@
 
             this.inject(type);
         },
-        init: function () {
-            this.set('baidu');
+        init: function (search_engine) {
+            this.set(search_engine);
         }
     },
     init: function () {
-        this.only_post_starter.show();
-        this.avatar_tips.init();
-        this.se.init();
-        this.post_starter_bg.init();
+        var self = this,
+            defaultSettings = {
+            avatar_tips: true,
+            only_post_starter: true,
+            post_starter_reply_high_light: false,
+            search_engine: "google"
+        };
+
+        chrome.storage.sync.get(defaultSettings, function (settings) {
+            if (settings.avatar_tips) {
+                self.avatar_tips.init();
+            }
+
+            if (settings.only_post_starter) {
+                self.only_post_starter.show();
+            }
+
+            if (settings.post_starter_reply_high_light) {
+                self.post_starter_bg.init();
+            }
+
+            self.se.init(settings.search_engine);
+        });
     }
 }).init();
