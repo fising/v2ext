@@ -19,21 +19,21 @@
         });
     },
     vars: {
-        settingWindowExist: false
+        settingWindowId: 0
     },
     init: function () {
         var self = this;
 
-        chrome.windows.onCreated.addListener(function () {
-            self.vars.settingWindowExist = true;
+        chrome.windows.onCreated.addListener(function (window) {
+            self.vars.settingWindowId = window.id;
         });
 
         chrome.windows.onRemoved.addListener(function () {
-            self.vars.settingWindowExist = false;
+            self.vars.settingWindowId = 0;
         });
 
         chrome.browserAction.onClicked.addListener(function () {
-            if (!self.vars.settingWindowExist) {
+            if (0 == self.vars.settingWindowExist) {
                 self.createSettingWindow();
             }
         });
