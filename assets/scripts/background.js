@@ -14,13 +14,28 @@
             top: top,
             focused: true,
             type: "popup"
+        }, function (window) {
+            console.log(window)
         });
+    },
+    vars: {
+        settingWindowExist: false
     },
     init: function () {
         var self = this;
 
-        chrome.browserAction.onClicked.addListener(function (tab) {
-            self.createSettingWindow();
+        chrome.windows.onCreated.addListener(function () {
+            self.vars.settingWindowExist = true;
+        });
+
+        chrome.windows.onRemoved.addListener(function () {
+            self.vars.settingWindowExist = false;
+        });
+
+        chrome.browserAction.onClicked.addListener(function () {
+            if (!self.vars.settingWindowExist) {
+                self.createSettingWindow();
+            }
         });
     }
 }).init();
