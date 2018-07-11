@@ -58,12 +58,20 @@
     avatar_tips: {
         request: function (user_name, wrapper) {
             $.get('/member/' + user_name, {}, function (data) {
-                var regexp = /<span class="gray">.*&nbsp; (.*)<\/span>/g;
+                var regexp = /<span class="gray">(.*)<div class="sep5"><\/div>/g;
                 var matches = regexp.exec(data);
+                if (!matches) {
+                    return;
+                }
                 var pieces = matches[1].split('，');
                 var items = '';
                 for (var i in pieces) {
                     items += '<li>' + pieces[i] + '</li>';
+                }
+                regexp = /<a href="\/top\/dau\">(\d+)<\/a>/g;
+                var matches = regexp.exec(data);
+                if (matches) {
+                    items += '<li>今日活跃度排名: ' + matches[1] + '</li>';
                 }
                 wrapper.find('._avatar_tips_box_base').html(items);
             }, 'text');
@@ -194,11 +202,11 @@
     init: function () {
         var self = this,
             defaultSettings = {
-            avatar_tips: true,
-            only_post_starter: true,
-            post_starter_reply_high_light: false,
-            search_engine: "google"
-        };
+                avatar_tips: true,
+                only_post_starter: true,
+                post_starter_reply_high_light: false,
+                search_engine: "google"
+            };
 
         chrome.storage.sync.get(defaultSettings, function (settings) {
             if (settings.avatar_tips) {
