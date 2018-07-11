@@ -35,7 +35,8 @@
                 self.createSettingWindow();
             } else {
                 chrome.windows.update(self.vars.settingWindowId, {
-                    drawAttention: true
+                    drawAttention: true,
+                    focused: true
                 });
             }
         });

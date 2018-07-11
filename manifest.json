@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "V2Ext",
   "description": "V2EX 社区功能增强扩展",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icons": {
     "16": "assets/images/icon_16.png",
     "48": "assets/images/icon_48.png",
