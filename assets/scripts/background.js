@@ -1,5 +1,6 @@
 ({
     createSettingWindow: function () {
+        var self = this;
         var path = "assets/pages/popup.html";
         var width = 318;
         var height = 456;
@@ -14,6 +15,9 @@
             top: top,
             focused: true,
             type: "popup"
+        }, function (w) {
+            w.alwaysOnTop = true;
+            self.vars.settingWindowId = w.id;
         });
     },
     vars: {
@@ -22,23 +26,21 @@
     init: function () {
         var self = this;
 
-        chrome.windows.onCreated.addListener(function (window) {
-            self.vars.settingWindowId = window.id;
-        });
-
-        chrome.windows.onRemoved.addListener(function () {
-            self.vars.settingWindowId = 0;
-        });
-
         chrome.browserAction.onClicked.addListener(function () {
-            if (0 == self.vars.settingWindowId) {
-                self.createSettingWindow();
-            } else {
+            chrome.windows.get(self.vars.settingWindowId, {
+                windowTypes: ['popup']
+            }, function (w) {
+                if (chrome.runtime.lastError) {
+                    return self.createSettingWindow();
+                }
+
                 chrome.windows.update(self.vars.settingWindowId, {
                     drawAttention: true,
                     focused: true
+                }, function (w) {
+                    w.alwaysOnTop = true;
                 });
-            }
+            });
         });
     }
 }).init();
