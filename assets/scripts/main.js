@@ -189,11 +189,11 @@
             }
 
             var settings = this.getSettings(type);
-
-            $('#Search form').get(0).action = settings[0];
-            $('#q').attr('name', settings[1]);
-
-            this.inject(type);
+            if (typeof $('#Search form').get(0) !== 'undefined') {
+                $('#Search form').get(0).action = settings[0];
+                $('#q').attr('name', settings[1]);
+                this.inject(type);
+            }
         },
         init: function (search_engine) {
             this.set(search_engine);
@@ -204,7 +204,7 @@
             defaultSettings = {
                 avatar_tips: true,
                 only_post_starter: true,
-                post_starter_reply_high_light: false,
+                post_starter_reply_high_light: true,
                 search_engine: "google"
             };
 
